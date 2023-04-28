@@ -175,11 +175,11 @@ def get_all_information(ticker_set):
 
 
 
-YNDX = yf.Ticker("YNDX.ME")
-print(YNDX.info)
+# YNDX = yf.Ticker("YNDX.ME")
+# print(YNDX.info)
 
 # print(type_ratio([['YNDX.ME', 4], ['AAPL', 2], ['GC=F', 5]]))
 # print(total_cost([['YNDX.ME', 4], ['AAPL', 2], ['GC=F', 5]]))
 # print(industries_ratio([['YNDX.ME', 4], ['AAPL', 2], ['GC=F', 5]]))
 # print(companies_ratio([['YNDX.ME', 4], ['AAPL', 2], ['GC=F', 5]]))
-print(get_all_information([['YNDX.ME', 4], ['AAPL', 2], ['GC=F', 5]]))
+# print(get_all_information([['YNDX.ME', 4], ['AAPL', 2], ['GC=F', 5]]))
