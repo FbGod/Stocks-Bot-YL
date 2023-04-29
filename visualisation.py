@@ -45,6 +45,10 @@ def visualize_industries(industries_set):
     percent_array = [round(float(value), 3) for value in industries.values()]
     labels = [elem for elem in industries.keys()]
     labels_cont = [str(key) + ': ' + str(round(value, 3)) for key, value in industries.items()]
+
+    px = 1 / plt.rcParams['figure.dpi']
+    fig = plt.figure(figsize=(1080 * px, 900 * px), facecolor='white')
+
     plot.pie(percent_array, labels=percent_array, shadow=True, autopct='%1.1f%%')
     plot.legend(labels)
     plot.title('Отрасли: ' + '\n' + '\n'.join(labels_cont) + '\n' + 'Общая сумма: ' + str(round(ttl_cost, 3)) + ' ₽')
@@ -67,6 +71,10 @@ def visualize_companies(industries_set):
     percent_array = [round(float(value), 3) for value in industries.values()]
     labels = [elem for elem in industries.keys()]
     labels_cont = [str(key) + ': ' + str(round(value, 3)) for key, value in industries.items()]
+
+    px = 1 / plt.rcParams['figure.dpi']
+    fig = plt.figure(figsize=(1080 * px, 900 * px), facecolor='white')
+
     plot.pie(percent_array, labels=percent_array, shadow=True, autopct='%1.1f%%')
     plot.legend(labels)
     plot.title('Компании: ' + '\n' + '\n'.join(labels_cont) + '\n' + 'Общая сумма: ' + str(round(ttl_cost, 3)) + ' ₽')
@@ -89,6 +97,10 @@ def visualize_currencies(currencies_set):
     percent_array = [round(float(value), 3) for value in industries.values()]
     labels = [elem for elem in industries.keys()]
     labels_cont = [str(key) for key, value in industries.items()]
+
+    px = 1 / plt.rcParams['figure.dpi']
+    fig = plt.figure(figsize=(1080 * px, 900 * px), facecolor='white')
+
     plot.pie(percent_array, labels=labels, shadow=True, autopct='%1.1f%%')
     plot.legend(labels)
     plot.title('Общая сумма: ' + str(round(ttl_cost, 3)) + ' ₽')

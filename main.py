@@ -2,6 +2,7 @@ import telebot
 from telebot import types
 
 import invest_portfile
+import stock_information
 import visualisation
 
 bot = telebot.TeleBot('5850999800:AAGBeKbfmi79ljRueP3tPY3aTPa4KmTyRp4')
@@ -45,12 +46,9 @@ def portfile_info(message):
     list_stocks = []
     try:
         for element in text.split(', '):
-            # print(element)
             stock, quantity = element.split('-')
-            # print(stock, quantity)
             list_stocks.append([stock, int(quantity)])
         result = invest_portfile.get_all_information(list_stocks)
-        # print(result)
         types_, companies, industries, currencies = result[0], result[1], result[2], result[1]
         vis = visualisation
         try:
@@ -72,7 +70,16 @@ def portfile_info(message):
 
 
 def stock_info(message):
-    bot.send_message(message.chat.id, message.text)
+    st_in = stock_information
+    bot.send_message(message.chat.id, 'Получаем информацию, подождите...')
+    try:
+        res = st_in.get_stock(message.text)
+        title = res[0]
+        image = res[1]
+        print(res)
+        bot.send_photo(message.chat.id, image, caption=title)
+    except Exception as e:
+        print(e)
 
 
 bot.polling(none_stop=True)
