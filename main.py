@@ -14,7 +14,7 @@ def start(message):
     btn2 = types.KeyboardButton("📈 Информация по акции 📉")
     markup.add(btn1, btn2)
     bot.send_message(message.chat.id,
-                     text=f"Привет, {message.from_user.username}! Я - бот который поможет тебе получить сводку по "
+                     text=f"Привет, {message.from_user.first_name}! Я - бот, который поможет тебе получить сводку по "
                           f"инвестиционному портфелю или подробную информацию по акции!", reply_markup=markup)
 
 
@@ -81,6 +81,7 @@ def stock_info(message):
         bot.send_photo(message.chat.id, image, caption=title)
     except Exception as e:
         print(e)
+        bot.send_message(message.chat.id, 'Ошибка в вводе или при получении/парсинге данных')
 
 
 bot.polling(none_stop=True)
