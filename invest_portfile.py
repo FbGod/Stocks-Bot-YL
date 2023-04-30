@@ -139,6 +139,7 @@ def currency_ratio(ticker_set):
     return industries
 
 
+# Получить все сразу
 def get_all_information(ticker_set):
     industries = {}
     companies = {}

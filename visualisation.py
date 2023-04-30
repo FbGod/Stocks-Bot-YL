@@ -7,6 +7,7 @@ matplotlib.use('agg')
 translate = {'MUTUALFUND': 'Паевой фонд', 'EQUITY': 'Акция', 'FUTURE': 'Фьючерс'}
 
 
+# Визуализация по типам ценных бумаг
 def visualize_type(types_set):
     plot = plt
     types_money = {}
@@ -35,6 +36,7 @@ def visualize_type(types_set):
     return im
 
 
+# Визуализация по отраслям
 def visualize_industries(industries_set):
     plot = plt
     industries = {}
@@ -61,6 +63,7 @@ def visualize_industries(industries_set):
     return im
 
 
+# Визуализация по компаниям
 def visualize_companies(industries_set):
     plot = plt
     industries = {}
@@ -87,6 +90,7 @@ def visualize_companies(industries_set):
     return im
 
 
+# Визуализация по валютам
 def visualize_currencies(currencies_set):
     plot = plt
     industries = {}

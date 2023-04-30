@@ -1,6 +1,5 @@
 import telebot
 from telebot import types
-
 import invest_portfile
 import stock_information
 import visualisation
@@ -40,6 +39,7 @@ def user_reply(message):
         bot.send_animation(message.chat.id, photo)
 
 
+# Баланс портфеля (метод-хэндлер)
 def portfile_info(message):
     bot.send_message(message.chat.id, 'Вычисляем баланс. Подождите...')
     text = message.text
@@ -69,6 +69,7 @@ def portfile_info(message):
         bot.send_message(message.chat.id, 'Ошибка в вводе данных')
 
 
+# Информация по акции (метод-хэндлер)
 def stock_info(message):
     st_in = stock_information
     bot.send_message(message.chat.id, 'Получаем информацию, подождите...')

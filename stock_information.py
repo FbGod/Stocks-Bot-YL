@@ -9,6 +9,7 @@ from PIL import Image
 sns.set()
 
 
+# Информация + график котировок
 def get_stock(ticker):
     end_date = date.today()
     start_date = end_date - timedelta(days=365)
@@ -42,4 +43,3 @@ def get_stock(ticker):
     im = Image.open(buf)
     plt.clf()
     return [name + ': ' + comp + ' ' + str(market_price) + ' ' + currency + recs, im]
-
