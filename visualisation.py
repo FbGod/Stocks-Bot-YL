@@ -4,6 +4,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 matplotlib.use('agg')
+translate = {'MUTUALFUND': 'Паевой фонд', 'EQUITY': 'Акция', 'FUTURE': 'Фьючерс'}
 
 
 def visualize_type(types_set):
@@ -17,8 +18,8 @@ def visualize_type(types_set):
             types_companies.setdefault(type_name, []).append(item[0])
             ttl_cost += item[2][0]
     percent_array = [round(float(value), 3) for value in types_money.values()]
-    labels = [elem for elem in types_money.keys()]
-    labels_cont = [str(key) + ': ' + ', '.join(value) for key, value in types_companies.items()]
+    labels = [translate[elem] if elem in translate else elem for elem in types_money.keys()]
+    labels_cont = [translate[str(key)] + ': ' + ', '.join(value) if key in translate else str(key) + ': ' + ', '.join(value) for key, value in types_companies.items()]
 
     px = 1 / plt.rcParams['figure.dpi']
     fig = plt.figure(figsize=(1080 * px, 900 * px), facecolor='white')
@@ -103,7 +104,7 @@ def visualize_currencies(currencies_set):
 
     plot.pie(percent_array, labels=labels, shadow=True, autopct='%1.1f%%')
     plot.legend(labels)
-    plot.title('Общая сумма: ' + str(round(ttl_cost, 3)) + ' ₽')
+    plot.title('Валюты: ' + '\n' + 'Общая сумма: ' + str(round(ttl_cost, 3)) + ' ₽')
     buf = io.BytesIO()
     plt.savefig(buf, dpi=300)
     buf.seek(0)

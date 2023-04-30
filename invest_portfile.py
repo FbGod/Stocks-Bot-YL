@@ -1,8 +1,7 @@
-import yfinance as yf
 import requests
+import yfinance as yf
 from bs4 import BeautifulSoup as bs
 from dateutil.parser import parse
-from pprint import pprint
 
 
 # Перевод валют с использованием xrates
@@ -88,7 +87,7 @@ def companies_ratio(ticker_set):
         market_price_ish *= quantity
         comp = yf.Ticker(ticker).info['shortName']
         companies.setdefault(comp, []).append([yf.Ticker(ticker).info['shortName'], [market_price_ish, currency],
-                                             [market_price, 'RUB']])
+                                               [market_price, 'RUB']])
     return companies
 
 
@@ -112,7 +111,7 @@ def industries_ratio(ticker_set):
         except KeyError:
             comp = 'No type'
         industries.setdefault(comp, []).append([yf.Ticker(ticker).info['shortName'], [market_price_ish, currency],
-                                             [market_price, 'RUB']])
+                                                [market_price, 'RUB']])
     return industries
 
 
@@ -136,7 +135,7 @@ def currency_ratio(ticker_set):
         except KeyError:
             comp = 'No type'
         industries.setdefault(comp, []).append([yf.Ticker(ticker).info['shortName'], [market_price_ish, currency],
-                                             [market_price, 'RUB']])
+                                                [market_price, 'RUB']])
     return industries
 
 
@@ -171,15 +170,3 @@ def get_all_information(ticker_set):
 
     return [types, companies, industries]
 
-
-
-
-
-# YNDX = yf.Ticker("YNDX.ME")
-# print(YNDX.info)
-
-# print(type_ratio([['YNDX.ME', 4], ['AAPL', 2], ['GC=F', 5]]))
-# print(total_cost([['YNDX.ME', 4], ['AAPL', 2], ['GC=F', 5]]))
-# print(industries_ratio([['YNDX.ME', 4], ['AAPL', 2], ['GC=F', 5]]))
-# print(companies_ratio([['YNDX.ME', 4], ['AAPL', 2], ['GC=F', 5]]))
-# print(get_all_information([['YNDX.ME', 4], ['AAPL', 2], ['GC=F', 5]]))
